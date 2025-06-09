@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    }
+    
+    body {
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+      padding: 24px;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 32px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    
+    .header h1 {
+      font-size: 28px;
+      color: #2962FF;
+      margin-bottom: 8px;
+    }
+    
+    .header p {
+      color: #666;
+      font-size: 16px;
+    }
+    
+    .content {
+      margin-bottom: 32px;
+    }
+    
+    h2 {
+      font-size: 22px;
+      margin-bottom: 16px;
+      color: #333;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 8px;
+    }
+    
+    p {
+      margin-bottom: 16px;
+      font-size: 15px;
+    }
+    
+    .features {
+      list-style-position: inside;
+      margin-bottom: 16px;
+    }
+    
+    .features li {
+      margin-bottom: 8px;
+      padding-left: 16px;
+      position: relative;
+    }
+    
+    .features li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: #2962FF;
+    }
+    
+    .developer {
+      background-color: #f8f9fa;
+      padding: 24px;
+      border-radius: 8px;
+      margin-top: 32px;
+      text-align: center;
+    }
+    
+    .developer h2 {
+      border-bottom: none;
+      margin-bottom: 16px;
+    }
+    
+    .portfolio-link {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #2962FF;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      margin-top: 16px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    .portfolio-link:hover {
+      background-color: #1E53E4;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+    }
+    
+    .footer {
+      margin-top: 48px;
+      text-align: center;
+      color: #666;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>URL Warning Extension</h1>
+      <p>Protecting you from potentially harmful websites</p>
+    </div>
+    
+    <div class="content">
+      <h2>About This Extension</h2>
+      <p>URL Warning is a browser extension designed to help you browse the web safely. It checks websites against blacklists and whitelists to warn you about potentially harmful sites and suggest safer alternatives.</p>
+      
+      <h2>Features</h2>
+      <ul class="features">
+        <li>Automatic checking of websites against customizable blacklists</li>
+        <li>Whitelist support for trusted websites</li>
+        <li>Ability to load lists from local files or remote URLs</li>
+        <li>Warning notifications for blacklisted sites</li>
+        <li>Suggestions for safer alternative websites</li>
+        <li>Option to leave unsafe sites immediately</li>
+      </ul>
+      
+      <div class="developer">
+        <h2>Developer</h2>
+        <p>This extension was developed by a passionate web security enthusiast.</p>
+        <a href="https://nerd.bh" target="_blank" class="portfolio-link">Visit My Portfolio</a>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p>&copy; 2025 URL Warning Extension. All rights reserved.</p>
+    </div>
+  </div>
+</body>
+</html>

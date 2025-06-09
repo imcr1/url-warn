@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/options.css">
+  <title>URL Warning Options</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div class="container">
+    <h1>URL Warning Options</h1>
+    <!-- Status message container with more prominent placement -->
+    <div id="statusMessage" class="status-message" role="alert"></div>
+    
+    <div class="tabs">
+      <button class="tab-button active" data-tab="blacklist">Blacklist</button>
+      <button class="tab-button" data-tab="whitelist">Whitelist</button>
+      <button class="tab-button" data-tab="settings">Settings</button>
+      <button class="tab-button" data-tab="about">About</button>
+    </div>
+    
+    <div id="blacklist" class="tab-content active">
+      <div class="section">
+        <h2>Blacklist Source</h2>
+        <div class="option-group">
+          <div class="radio-group">
+            <label>
+              <input type="radio" name="blacklistSource" value="local" checked>
+              Upload Local JSON File
+            </label>
+            <label>
+              <input type="radio" name="blacklistSource" value="remote">
+              Fetch from URL
+            </label>
+          </div>
+          
+          <div id="localFileSection" class="input-section">
+            <input type="file" id="blacklistFile" accept=".json">
+            <p class="help-text">Select a JSON file with your blacklist</p>
+            <p class="tip-text"><i>Tip: You can now block specific paths like <code>example.com/bad-path</code> or entire domains like <code>example.com</code></i></p>
+          </div>
+          
+          <div id="remoteUrlSection" class="input-section hidden">
+            <input type="text" id="blacklistUrl" placeholder="https://example.com/blacklist.json">
+            <button id="fetchBlacklistBtn" class="button">Fetch</button>
+            <p class="help-text">Enter a URL to a JSON file with your blacklist</p>
+            <p class="tip-text"><i>Tip: Remote blacklists can include path-specific rules</i></p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="section">
+        <h2>Blacklist Preview</h2>
+        <div class="action-bar">
+          <button id="clearBlacklistBtn" class="button danger">Clear Blacklist</button>
+        </div>
+        <div class="table-container">
+          <table id="blacklistTable">
+            <thead>
+              <tr>
+                <th>Site</th>
+                <th>Reason</th>
+                <th>Alternatives</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Blacklist entries will be added here -->
+            </tbody>
+          </table>
+          <p id="noBlacklistMessage" class="centered-message">No blacklist entries found</p>
+        </div>
+      </div>
+    </div>
+    
+    <div id="whitelist" class="tab-content">
+      <div class="section">
+        <h2>Whitelist Source</h2>
+        <div class="option-group">
+          <div class="radio-group">
+            <label>
+              <input type="radio" name="whitelistSource" value="local" checked>
+              Upload Local JSON File
+            </label>
+            <label>
+              <input type="radio" name="whitelistSource" value="remote">
+              Fetch from URL
+            </label>
+          </div>
+          
+          <div id="whitelistLocalFileSection" class="input-section">
+            <input type="file" id="whitelistFile" accept=".json">
+            <p class="help-text">Select a JSON file with your whitelist</p>
+            <p class="tip-text"><i>Tip: You can now whitelist specific paths like <code>example.com/safe-path</code> or entire domains</i></p>
+          </div>
+          
+          <div id="whitelistRemoteUrlSection" class="input-section hidden">
+            <input type="text" id="whitelistUrl" placeholder="https://example.com/whitelist.json">
+            <button id="fetchWhitelistBtn" class="button">Fetch</button>
+            <p class="help-text">Enter a URL to a JSON file with your whitelist</p>
+            <p class="tip-text"><i>Tip: Remote whitelists can include path-specific rules</i></p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="section">
+        <h2>Whitelist Preview</h2>
+        <div class="action-bar">
+          <button id="clearWhitelistBtn" class="button danger">Clear Whitelist</button>
+        </div>
+        <div class="table-container">
+          <table id="whitelistTable">
+            <thead>
+              <tr>
+                <th>Site</th>
+                <th>Reason</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Whitelist entries will be added here -->
+            </tbody>
+          </table>
+          <p id="noWhitelistMessage" class="centered-message">No whitelist entries found</p>
+        </div>
+      </div>
+      
+      <!-- Whitelist manual entry section removed -->
+    </div>
+    
+    <div id="settings" class="tab-content">
+      <div class="section">
+        <h2>Notification Settings</h2>
+        <div class="option-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="notificationsEnabled" checked>
+            Show notifications when blacklisted sites are detected
+          </label>
+          
+          <label class="checkbox-label">
+            <input type="checkbox" id="toastNotifications" checked>
+            Show toast notifications for whitelisted sites
+          </label>
+        </div>
+      </div>
+      
+      <div class="section">
+        <h2>Auto-Check Settings</h2>
+        <div class="option-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="autoCheckEnabled" checked>
+            Automatically check all sites when loading
+          </label>
+        </div>
+      </div>
+      
+      <div class="section">
+        <h2>Default Lists</h2>
+        <div class="option-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="autoFetch" checked>
+            Automatically fetch default lists from nerd.bh
+          </label>
+          <div class="info-text">Lists will be fetched from nerd.bh/apis/warnme/</div>
+          <div class="auto-refresh-settings">
+            <label>Auto-refresh interval:</label>
+            <select id="refreshInterval" class="select-input">
+              <option value="never">Manual only</option>
+              <option value="daily">Daily</option>
+              <option value="weekly" selected>Weekly</option>
+              <option value="monthly">Monthly</option>
+            </select>
+          </div>
+          <div class="checkbox-label">
+            <input type="checkbox" id="refreshOnBlock" checked>
+            Auto-refresh lists when a blocked site is detected
+          </div>
+          <button id="refreshListsBtn" class="button">Refresh Lists Now</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- About tab with unique styling -->
+    <div id="about" class="tab-content">
+      <div class="section">
+        
+        
+        <div class="about-container">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+            </div>
+            <div class="terminal-title">terminal@nerd.bh:~</div>
+          </div>
+          
+          <div class="about-header">
+            <div class="ascii-logo">
+██    ██ ██████  ██      ██     ██  █████  ██████  ███    ██ ██ ███    ██  ██████  
+██    ██ ██   ██ ██      ██     ██ ██   ██ ██   ██ ████   ██ ██ ████   ██ ██       
+██    ██ ██████  ██      ██  █  ██ ███████ ██████  ██ ██  ██ ██ ██ ██  ██ ██   ███ 
+██    ██ ██   ██ ██      ██ ███ ██ ██   ██ ██   ██ ██  ██ ██ ██ ██  ██ ██ ██    ██ 
+ ██████  ██   ██ ███████  ███ ███  ██   ██ ██   ██ ██   ████ ██ ██   ████  ██████  
+            </div>
+            
+          </div>
+          
+          <div class="about-content">
+          <div class="developer-info">
+            <div class="dev-avatar">
+              <span class="dev-initial">H</span>
+            </div>
+            <div class="dev-details">
+              <h3>Hasan Al-Naham</h3>
+              <p class="dev-title">App Developer</p>
+              <p class="dev-quote">"Building tools that make the web a safer place"</p>
+              <div class="contact-info" style="margin-top:15px;">
+                <a href="https://nerd.bh" target="_blank" class="contact-link website" style="width:100%;">Visit My Portfolio @ nerd.bh</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="about-description">
+            <h4 class="cmd-line">cat about_extension.txt</h4>
+            <p><span class="typed-text">URL Warning is a Chrome extension designed to protect users from potentially harmful websites. It uses customizable blacklists and whitelists to identify and warn users about sites that may contain malware, phishing attempts, or other security risks.</span></p>
+            
+            <h4 class="cmd-line">ls -la features/</h4>
+            <ul class="feature-list">
+              <li style="--index: 1"><span class="feature-icon">[01]</span> <span>Real-time website protection</span></li>
+              <li style="--index: 2"><span class="feature-icon">[02]</span> <span>Auto-refreshing blacklists and whitelists</span></li>
+              <li style="--index: 3"><span class="feature-icon">[03]</span> <span>Path-based URL matching <span class="new-feature">NEW!</span></span></li>
+              <li style="--index: 4"><span class="feature-icon">[04]</span> <span>Highly customizable settings</span></li>
+              <li style="--index: 5"><span class="feature-icon">[05]</span> <span>Mobile-friendly design</span></li>
+              <li style="--index: 6"><span class="feature-icon">[06]</span> <span>Smart notifications system</span></li>
+            </ul>
+            
+            <div class="feature-example">
+              <p class="example-title">$ cat example.txt</p>
+              <code class="example-code">
+                # Path-based URL matching example:
+                Block specific path: example.com/malware
+                While keeping: example.com/safe accessible
+                
+                # Works with complex paths:
+                wiki.archlinux.org/title/VPN_over_SSH
+              </code>
+            </div>
+            
+            <h4 class="cmd-line">system_info</h4>
+            <div class="version-info">
+              <p>VERSION="1.0.0"</p>
+              <p>UPDATED="June 2025"</p>
+              <p>STATUS="Active"</p>
+              <p>API_ENDPOINT="nerd.bh/apis/warnme/"</p>
+            </div>
+            
+            <h4 class="cmd-line">contact --list-all</h4>
+            <div class="contact-info">
+              <a href="https://nerd.bh" target="_blank" class="contact-link website"><span class="feature-icon">🌐</span> Portfolio</a>
+             
+              <a href="https://github.com/imcr1" target="_blank" class="contact-link github"><span class="feature-icon">🔧</span> GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="button-group">
+      <!-- <button id="saveBtn" class="button primary">Save Settings</button> -->
+      <button id="resetBtn" class="button">Reset to Default</button>
+    </div>
+  </div>
+  
+  <script src="js/options.js"></script>
+</body>
+</html>

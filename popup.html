@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/popup.css">
+  <title>URL Warning</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>URL Warning</h1>
+      <div class="toggle-container">
+        <span>Enabled</span>
+        <label class="switch">
+          <input type="checkbox" id="enableToggle" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+
+    <div id="statusContainer" class="status-container">
+      <div id="statusIndicator" class="status-indicator"></div>
+      <div class="status-content">
+        <div id="statusText" class="status-text">Checking...</div>
+        <div id="hostname" class="hostname"></div>
+      </div>
+    </div>
+
+    <div id="blacklistInfo" class="blacklist-info hidden">
+      <h3>Blacklist Reason</h3>
+      <p id="reasonText"></p>
+      
+      <h3>Recommended Alternatives</h3>
+      <div id="alternativesList"></div>
+    </div>
+
+    <div class="footer">
+      <button id="settingsBtn" class="button">Settings</button>
+    </div>
+  </div>
+
+  <script src="js/popup.js"></script>
+</body>
+</html>
