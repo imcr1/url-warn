@@ -18,9 +18,15 @@ A powerful Chrome extension designed to protect users from potentially harmful w
   - Fetch from remote URLs
   - Clear lists with a single click
 - **Multiple Data Sources**:
-  - Built-in default lists from `nerd.bh/apis/warnme/`
+  - Built-in default lists from [nerd.bh/apis/warnme/](https://nerd.bh/apis/warnme/)
   - Support for custom remote endpoints
   - Local file imports
+
+### Online Search & API Access
+- **Live Website Database**: Access the constantly updated online database of harmful websites
+- **Public API**: Query the [nerd.bh/apis/warnme/](https://nerd.bh/apis/warnme/) API for real-time URL checks
+- **Community-contributed Data**: Benefit from community-reported harmful websites
+- **API Integration Options**: Use the same API for your own applications
 
 ### User Experience
 - **Tab-based Settings Interface**: Easily navigate between Blacklist, Whitelist, Settings, and About
