@@ -1,0 +1,133 @@
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+}
+
+.popup-container {
+  width: 320px;
+  min-height: 200px;
+  max-width: 100%;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 0;
+}
+
+.header {
+  background-color: #2962FF;
+  color: white;
+  padding: 12px 15px;
+  font-weight: 500;
+}
+
+.shield-icon {
+  font-size: 1.25rem;
+}
+
+.content {
+  padding: 15px;
+}
+
+.status-section {
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+.status-section.safe {
+  background-color: rgba(0, 191, 165, 0.1);
+  border-left: 4px solid #00BFA5;
+}
+
+.status-section.danger {
+  background-color: rgba(217, 83, 79, 0.1);
+  border-left: 4px solid #d9534f;
+}
+
+.status-section.whitelisted {
+  background-color: rgba(41, 98, 255, 0.1);
+  border-left: 4px solid #2962FF;
+}
+
+.status-icon {
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.status-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.status-details {
+  margin: 3px 0 0;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.info-section {
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+}
+
+.action-buttons {
+  margin-bottom: 10px;
+}
+
+.footer {
+  border-top: 1px solid #eee;
+  padding: 10px 15px;
+  color: #666;
+  font-size: 0.8rem;
+}
+
+/* Status-specific colors */
+.safe .status-title {
+  color: #00BFA5;
+}
+
+.danger .status-title {
+  color: #d9534f;
+}
+
+.whitelisted .status-title {
+  color: #2962FF;
+}
+
+/* Animation */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Bootstrap overrides */
+.btn-primary {
+  background-color: #2962FF;
+  border-color: #2962FF;
+}
+
+.btn-primary:hover {
+  background-color: #1e56f0;
+  border-color: #1e56f0;
+}
+
+.btn-danger {
+  background-color: #d9534f;
+  border-color: #d9534f;
+}
+
+.btn-success {
+  background-color: #00BFA5;
+  border-color: #00BFA5;
+}

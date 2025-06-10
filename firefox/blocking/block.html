@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Blocked - URL Warning</title>
+  <link rel="stylesheet" href="../lib/bootstrap.min.css">
+  <link rel="stylesheet" href="../lib/bootstrap-icons.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .block-container {
+      max-width: 600px;
+      margin: 50px auto;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+    .block-header {
+      background-color: #e74c3c;
+      color: white;
+      padding: 15px 20px;
+      position: relative;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    .block-header h1 {
+      font-size: 1.5rem;
+      margin: 0;
+      display: flex;
+      align-items: center;
+    }
+    .warning-icon {
+      color: #ffcc00;
+      margin-right: 10px;
+      font-size: 1.8rem;
+    }
+    .block-body {
+      background-color: white;
+      padding: 20px;
+    }
+    .reason-box {
+      background-color: #fff5f5;
+      border-left: 4px solid #e74c3c;
+      padding: 15px;
+      margin: 15px 0;
+    }
+    .alternatives-box {
+      background-color: #f0f8ff;
+      border-radius: 6px;
+      padding: 15px;
+      margin: 20px 0;
+      border: 2px solid #4CAF50;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .alternatives-box h5 {
+      color: #4CAF50;
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+    }
+    .alternatives-box h5:before {
+      content: '🔍';
+      margin-right: 8px;
+      display: inline-block;
+    }
+    .alternatives-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .alternative-link {
+      display: flex;
+      align-items: center;
+      padding: 10px 12px;
+      background-color: #e8f5e9;
+      border: 1px solid #c8e6c9;
+      border-radius: 4px;
+      color: #2e7d32;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .alternative-link:hover {
+      background-color: #c8e6c9;
+      transform: translateY(-2px);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .link-icon {
+      margin-right: 10px;
+      color: #4CAF50;
+    }
+    .alternatives-help-text {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #666;
+      font-style: italic;
+    }
+    .action-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    .site-url {
+      font-weight: 500;
+      color: #444;
+      word-break: break-all;
+    }
+    .footer {
+      text-align: center;
+      padding: 10px;
+      font-size: 0.8rem;
+      color: #777;
+      border-top: 1px solid #eee;
+    }
+  </style>
+</head>
+<body>
+  <div class="block-container">
+    <div class="block-header">
+      <h1><i class="bi bi-exclamation-triangle-fill warning-icon"></i> Blacklisted Site Warning</h1>
+    </div>
+    
+    <div class="block-body">
+      <p class="lead">This website has been blacklisted according to your settings.</p>
+      
+      <div class="site-url" id="blockedUrl">Loading...</div>
+      
+      <div class="reason-box">
+        <strong>Reason:</strong> <span id="blockReason">Loading...</span>
+      </div>
+      
+      <div class="alternatives-box" id="alternativesBox">
+        <h5><i class="bi bi-search"></i> Recommended alternatives:</h5>
+        <div id="alternativesList" class="alternatives-container">
+          <!-- Loading state -->
+          <div class="d-flex align-items-center" id="loadingIndicator">
+            <div class="spinner-border spinner-border-sm text-success me-2" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            Loading alternatives...
+          </div>
+        </div>
+        <p class="alternatives-help-text">These are safer alternatives to the blocked site. Click any to visit.</p>
+      </div>
+      
+      <div class="action-buttons">
+        <button id="leaveBtn" class="btn btn-success">
+          <i class="bi bi-arrow-left me-1"></i> Leave this site
+        </button>
+        
+        <button id="continueBtn" class="btn btn-danger">
+          <i class="bi bi-exclamation-circle me-1"></i> Continue anyway
+        </button>
+      </div>
+    </div>
+    
+    <div class="footer">
+      URL Warning Extension - Protecting you from potentially harmful websites
+    </div>
+  </div>
+
+  <script src="../lib/bootstrap.bundle.min.js"></script>
+  <script src="block.js"></script>
+</body>
+</html>
