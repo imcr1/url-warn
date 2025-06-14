@@ -19,7 +19,7 @@ A Firefox extension that provides real-time protection against potentially harmf
 
 ### From Firefox Add-ons (Recommended)
 
-1. Visit the [URL Warning page on Firefox Add-ons](https://addons.mozilla.org/firefox/addon/url-warning/)
+1. Visit the [URL Warning page on Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/url-warning-for-firefox/)
 2. Click "Add to Firefox"
 3. Follow the prompts to complete installation
 
