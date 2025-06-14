@@ -43,7 +43,7 @@ A powerful Chrome extension designed to protect users from potentially harmful w
 ## 🚀 Installation
 
 ### From Chrome Web Store
-1. Visit [URL Warning on Chrome Web Store](#) *(Coming Soon)*
+1. Visit [URL Warning on Chrome Web Store](https://chromewebstore.google.com/detail/url-warning-extension/hkiafplningehojlcdlplfahbachgbjg)
 2. Click "Add to Chrome"
 3. Confirm the installation
 
